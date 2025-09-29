@@ -4,11 +4,20 @@ import Login from './Login/Login'
 import Home from './Home/Home'
 import Contact from './contact/contact'
 import About from './About/About'
+import Practice from './practice/practice'
+import UseStateDemo from './practice/Hooks/useStateDemo'
+import UseEffectDemo from './practice/Hooks/useEffectDemo'
 
 function App() {
 
   return (
     <>
+    <UseEffectDemo />
+    <hr />
+    <UseStateDemo />
+    <hr />
+    <Practice />
+
      <BrowserRouter>
           {/* Navigation */}
       <nav>
