@@ -1,8 +1,8 @@
 import { useReducer } from "react";
 
 const initialScore = [
-  { id: 1, score: 0, name: "Sameer"} ,
-  { id: 2, score: 0, name: "Malik" }
+  { id: 1, score: 0, name: "Sameer1"} ,
+  { id: 2, score: 0, name: "Malik1" }
 ];
 
 const reducer = (state:any, action: any) => {
