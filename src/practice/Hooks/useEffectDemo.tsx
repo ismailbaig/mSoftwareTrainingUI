@@ -8,10 +8,11 @@ function UseEffectDemo() {
     
     // setCount(count + 1);
     // API Call
-    fetch('https://jsonplaceholder.typicode.com/todos/' + count)
+    // fetch('https://jsonplaceholder.typicode.com/todos/' + count)
+    fetch('http://localhost:8000/my-endpoint')
       .then(response => response.json())
       .then(json => {
-        setTitle(json.title);
+        setTitle(json.msg);
       })
   }, [title]);
 

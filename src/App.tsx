@@ -1,5 +1,5 @@
 import './App.css'
-import UseReduxDemo from './practice/Hooks/Redux/useReduxDemo'
+import UseEffectDemo from './practice/Hooks/useEffectDemo'
 
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
   return (
 
     <>
-      <UseReduxDemo />
+      <UseEffectDemo />
     </>
   )
 }
