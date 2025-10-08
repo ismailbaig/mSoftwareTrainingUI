@@ -1,5 +1,6 @@
 import './App.css'
 import UseEffectDemo from './practice/Hooks/useEffectDemo'
+import Users from './User/Users'
 
 
 function App() {
@@ -7,7 +8,7 @@ function App() {
   return (
 
     <>
-      <UseEffectDemo />
+      <Users />
     </>
   )
 }
