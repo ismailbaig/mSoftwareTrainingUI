@@ -1,6 +1,7 @@
 import './App.css'
-import UseEffectDemo from './practice/Hooks/useEffectDemo'
+import HC_Spline_Demo from './HighchartsGraphs/HC_Spline_Demo'
 import Users from './User/Users'
+
 
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
   return (
 
     <>
+      <HC_Spline_Demo />
       <Users />
     </>
   )
