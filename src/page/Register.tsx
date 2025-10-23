@@ -9,20 +9,23 @@ import {
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function Login() {
+function Register() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const navigate = useNavigate();
 
-  const redirectToDashboard = () => {
-    // Your function logic here
-
+  const handleRegister = () => {
     if (!email || !password) {
       alert("Please fill in both email and password");
       return;
     }
-    // Navigate only if login is successful
+    // You can call your register API here later
+    alert("Registered successfully!");
     navigate("/chart");
+  };
+
+  const goToLogin = () => {
+    navigate("/login");
   };
 
   return (
@@ -42,9 +45,12 @@ function Login() {
           </Typography>
 
           <Stack spacing={2}>
-            <TextField label="Email" variant="outlined" fullWidth
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            <TextField
+              label="Email"
+              variant="outlined"
+              fullWidth
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
 
             <TextField
@@ -54,15 +60,27 @@ function Login() {
               fullWidth
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-
             />
-            <Button variant="contained" color="primary" fullWidth
-              onClick={redirectToDashboard}>
-              Login
+
+            <Button
+              variant="contained"
+              color="primary"
+              fullWidth
+              onClick={handleRegister}
+            >
+              Register
             </Button>
-            <Button variant="outlined" color="secondary" fullWidth>
-              Sign Up
-            </Button>
+
+            <Typography textAlign="center" variant="body2">
+             Already have an account?{" "}
+            <span
+            style={{ color: "#1976d2", cursor: "pointer", fontWeight: "bold" }}
+            onClick={goToLogin}
+            >
+            Login
+            </span>
+            </Typography>
+
           </Stack>
         </CardContent>
       </Card>
@@ -70,4 +88,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;

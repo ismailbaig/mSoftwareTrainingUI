@@ -14,15 +14,18 @@ function Login() {
   const [password, setPassword] = useState<string>("");
   const navigate = useNavigate();
 
-  const redirectToDashboard = () => {
-    // Your function logic here
-
+  const handleLogin = () => {
     if (!email || !password) {
-      alert("Please fill in both email and password");
+      alert("Please enter email and password");
       return;
     }
-    // Navigate only if login is successful
+    // Your login API logic here
+    alert("Login successful!");
     navigate("/chart");
+  };
+
+  const goToRegister = () => {
+    navigate("/register");
   };
 
   return (
@@ -38,13 +41,16 @@ function Login() {
       <Card sx={{ width: 350, p: 2, borderRadius: 3, boxShadow: 3 }}>
         <CardContent>
           <Typography variant="h6" textAlign="center" gutterBottom>
-            Register
+            Login
           </Typography>
 
           <Stack spacing={2}>
-            <TextField label="Email" variant="outlined" fullWidth
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            <TextField
+              label="Email"
+              variant="outlined"
+              fullWidth
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
 
             <TextField
@@ -54,15 +60,27 @@ function Login() {
               fullWidth
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-
             />
-            <Button variant="contained" color="primary" fullWidth
-              onClick={redirectToDashboard}>
+
+            <Button
+              variant="contained"
+              color="primary"
+              fullWidth
+              onClick={handleLogin}
+            >
               Login
             </Button>
-            <Button variant="outlined" color="secondary" fullWidth>
-              Sign Up
-            </Button>
+
+            <Typography textAlign="center" variant="body2">
+            Don't have an account?{" "}
+            <span
+            style={{ color: "#1976d2", cursor: "pointer", fontWeight: "bold" }}
+            onClick={goToRegister}
+            >
+            Register here
+            </span>
+            </Typography>
+
           </Stack>
         </CardContent>
       </Card>
