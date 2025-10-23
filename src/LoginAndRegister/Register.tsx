@@ -9,23 +9,31 @@ import {
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function Login() {
+function Register() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [confirmPassword, setconfirmPassword] = useState<string>("");
   const navigate = useNavigate();
 
-  const handleLogin = () => {
+  const handleRegister = () => {
     if (!email || !password) {
-      alert("Please enter email and password");
+      alert("Please fill in both email and password");
       return;
     }
-    // Your login API logic here
-    alert("Login successful!");
+
+    // check if password and confirm password are same or not
+    if (!password || !confirmPassword || password !== confirmPassword) {
+      alert("Password and Confirm password should be same !!!");
+      return;
+    }
+
+    // You can call your register API here later
+    alert("Registered successfully!");
     navigate("/chart");
   };
 
-  const goToRegister = () => {
-    navigate("/register");
+  const goToLogin = () => {
+    navigate("/login");
   };
 
   return (
@@ -41,7 +49,7 @@ function Login() {
       <Card sx={{ width: 350, p: 2, borderRadius: 3, boxShadow: 3 }}>
         <CardContent>
           <Typography variant="h6" textAlign="center" gutterBottom>
-            Login
+            Register
           </Typography>
 
           <Stack spacing={2}>
@@ -62,22 +70,31 @@ function Login() {
               onChange={(e) => setPassword(e.target.value)}
             />
 
+            <TextField
+              label="Confirm Password"
+              type="password"
+              variant="outlined"
+              fullWidth
+              value={confirmPassword}
+              onChange={(e) => setconfirmPassword(e.target.value)}
+            />
+
             <Button
               variant="contained"
               color="primary"
               fullWidth
-              onClick={handleLogin}
+              onClick={handleRegister}
             >
-              Login
+              Register
             </Button>
 
             <Typography textAlign="center" variant="body2">
-            Don't have an account?{" "}
+             Already have an account?{" "}
             <span
             style={{ color: "#1976d2", cursor: "pointer", fontWeight: "bold" }}
-            onClick={goToRegister}
+            onClick={goToLogin}
             >
-            Register here
+            Login
             </span>
             </Typography>
 
@@ -88,4 +105,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;

@@ -25,6 +25,11 @@ function Login() {
     navigate("/chart");
   };
 
+  const redirectToRegister = () => {
+     // Navigate only if login is successful
+    navigate("/register");
+  }
+
   return (
     <div
       style={{
@@ -38,7 +43,7 @@ function Login() {
       <Card sx={{ width: 350, p: 2, borderRadius: 3, boxShadow: 3 }}>
         <CardContent>
           <Typography variant="h6" textAlign="center" gutterBottom>
-            Register
+            Login
           </Typography>
 
           <Stack spacing={2}>
@@ -60,7 +65,8 @@ function Login() {
               onClick={redirectToDashboard}>
               Login
             </Button>
-            <Button variant="outlined" color="secondary" fullWidth>
+            <Button variant="outlined" color="secondary" fullWidth
+             onClick={redirectToRegister}>
               Sign Up
             </Button>
           </Stack>
