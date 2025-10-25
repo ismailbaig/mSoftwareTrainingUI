@@ -8,25 +8,33 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { loginUser } from "./api/api_login_register";
 
 function Login() {
-  const [email, setEmail] = useState<string>("");
+  const [userName, setuserName] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const navigate = useNavigate();
 
-  const redirectToDashboard = () => {
+  const redirectToDashboard = async () => {
     // Your function logic here
 
-    if (!email || !password) {
-      alert("Please fill in both email and password");
+    if (!userName || !password) {
+      alert("Please fill in both UserName and password");
       return;
     }
-    // Navigate only if login is successful
-    navigate("/chart");
+
+    const response =  await loginUser(userName, password);
+    
+    if (response == null) {
+      alert("Login failed. Please try again.");
+    } else {
+      alert("Login successfully!");
+      navigate("/chart");
+    }
   };
 
   const redirectToRegister = () => {
-     // Navigate only if login is successful
+    // Navigate only if login is successful
     navigate("/register");
   }
 
@@ -48,8 +56,8 @@ function Login() {
 
           <Stack spacing={2}>
             <TextField label="Email" variant="outlined" fullWidth
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+              value={userName}
+              onChange={(e) => setuserName(e.target.value)}
             />
 
             <TextField
@@ -66,7 +74,7 @@ function Login() {
               Login
             </Button>
             <Button variant="outlined" color="secondary" fullWidth
-             onClick={redirectToRegister}>
+              onClick={redirectToRegister}>
               Sign Up
             </Button>
           </Stack>
