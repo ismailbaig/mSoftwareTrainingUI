@@ -39,15 +39,15 @@ export const registerUser = async (
 
   export const loginUser = async (
 
-    userName: string,
+    email: string,
     pd: string
 
 ) => {
     try {
       const response = await axios.post(
-      "http://127.0.0.1:8000/api/login",
+      "http://127.0.0.1:8000/api/v1/login",
       {
-        userName: userName,
+        email: email,
         pd: pd,
       },
       {
