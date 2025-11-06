@@ -8,7 +8,9 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { loginUser } from "./api/api_login_register";
+import { loginUser } from "../api/login_register";
+import { jwtDecode } from "jwt-decode";
+import type { loginModel } from "../models/login.model";
 
 function Login() {
   const [userName, setuserName] = useState<string>("");
@@ -29,7 +31,11 @@ function Login() {
       alert("Login failed. Please try again.");
     } else {
       alert("Login successfully!");
-      navigate("/chart");
+      const response_decoded = jwtDecode<loginModel>(response.access_token);
+      console.log("Decoded token:", response_decoded);
+
+      navigate("/marks", { state: { role: response_decoded.role, email: response_decoded.email } });
+      
     }
   };
 

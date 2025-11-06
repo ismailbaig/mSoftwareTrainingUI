@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { registerUser } from "./api/api_login_register";
+import { registerUser } from "../api/login_register";
 
 function Register() {
   const [firstName, setFirstName] = useState<string>("");

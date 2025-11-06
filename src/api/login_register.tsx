@@ -1,4 +1,7 @@
 import axios from "axios";
+import base_api from "./axiosConfig";
+import { jwtDecode } from "jwt-decode";
+import type { loginModel } from "../models/login.model";
 
 
 export const registerUser = async (
@@ -45,17 +48,19 @@ export const registerUser = async (
 ) => {
     try {
       const response = await axios.post(
-      "http://127.0.0.1:8000/api/login",
+      base_api.getUri() + "/login",
       {
-        userName: userName,
+        email: userName,
         pd: pd,
       },
       {
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+        },
       }
     );
       console.log("Data:", response.data);
-      return response.data;
+      return response.data
     } catch (error) {
       console.error("Error fetching data:", error);
       return null;
